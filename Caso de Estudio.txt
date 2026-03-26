@@ -1,0 +1,80 @@
+Caso de Estudio
+La empresa TalentCorp S.A. es una organización en crecimiento que necesita implementar un sistema integral de gestión de Recursos Humanos. La empresa tiene 5 departamentos (Recursos Humanos, Tecnología, Ventas, Finanzas y Marketing), múltiples oficinas, más de 200 empleados y un volumen considerable de transacciones relacionadas con ausencias, evaluaciones de desempeño y capacitaciones.
+Problemática: La empresa NO tiene ningún sistema automatizado. Los registros están en Excel dispersos, no hay historicidad de datos, no se pueden analizar tendencias de rotación ni ausentismo, los reportes son manuales y propensos a errores, y las decisiones son completamente reactivas por falta de indicadores.
+Tu misión como Ingeniero de Datos es:
+1.
+Diseñar la base de datos operacional (OLTP) RRHH que soporte todas las transacciones diarias
+2.
+Poblar la BD con datos realistas de empleados, ausencias, evaluaciones y capacitaciones
+3.
+Diseñar e implementar un Data Warehouse (RRHH_DW) con modelo dimensional
+4.
+Crear procesos ETL que extraigan, transformen y carguen datos del OLTP al DWH
+5.
+Definir y calcular KPIs estratégicos o consultas que permitan tomar decisiones basadas en datos.
+❖
+Requerimientos del Negocio
+La base de datos OLTP RRHH debe gestionar:
+1. Oficinas
+•
+Código oficina, ciudad, país, región, código postal, teléfono, dirección
+•
+Ejemplo: 'MAD-CENTRO' en Madrid, 'BOG-NORTE' en Bogotá
+2. Departamentos Organizacionales
+•
+Nombre departamento, descripción, oficina donde opera
+•
+Departamentos: Recursos Humanos, Tecnología, Ventas, Finanzas, Marketing
+3. Puestos de Trabajo
+•
+Nombre puesto, nivel salarial (Junior/Mid-Level/Senior), salario mínimo, salario máximo
+•
+Ejemplos: Gerente RRHH (Senior), Desarrollador (Junior/Senior), Analista Ventas
+
+4. Empleados
+•
+Datos personales: identificación, nombre, apellidos, fecha nacimiento, género, estado civil
+•
+Datos laborales: email, teléfono, fecha contratación, departamento, puesto, salario actual
+•
+Jerarquía: referencia a jefe directo (auto-referencia), oficina asignada
+•
+Mínimo 50 empleados con distribución realista por departamento
+5. Ausencias
+•
+Empleado, tipo ausencia (Vacaciones, Enfermedad, Permiso Personal, Licencia Médica)
+•
+Fecha inicio, fecha fin, días totales (calculado), justificada (Sí/No)
+•
+Comentarios opcionales, fecha registro
+•
+Mínimo 100 registros de ausencias distribuidos en 2023-2024
+6. Evaluaciones de Desempeño
+•
+Empleado evaluado, fecha evaluación, calificación (escala 1.0-5.0)
+•
+Evaluador (otro empleado, normalmente el jefe), comentarios detallados
+•
+Fecha registro. Evaluaciones semestrales o anuales
+•
+Mínimo 80 evaluaciones (cada empleado al menos 1)
+7. Capacitaciones
+•
+Nombre capacitación, descripción, proveedor, costo
+•
+Fecha inicio, fecha fin, duración calculada
+•
+Ejemplos: Liderazgo, Excel Avanzado, Power BI, Python, Marketing Digital
+8. Asignación Empleados-Capacitaciones
+•
+Relación muchos-a-muchos: empleado, capacitación
+•
+Calificación obtenida (0-100), fecha completado, estado (Completada/En Curso)
+•
+Comentarios sobre el desempeño en la capacitación
+•
+Mínimo 60 asignaciones (algunos empleados varias capacitaciones)
+❖
+Modelo Relacional OLTP RRHH
+Debes diseñar el modelo relacional normalizado (3FN) con las siguientes entidades y sus relaciones:
+Entidades: Oficinas, Departamentos, Puestos, Empleados, Ausencias, Evaluaciones, Capacitaciones, Empleados_Capacitaciones
