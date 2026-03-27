@@ -90,5 +90,3 @@ psql -U <usuario> -h <host> -p <puerto> -d rrhh_oltp -c "SELECT rrhh_dw.cargar_h
 - Ajusta rangos y volúmenes en `Poblar_RRHH_OLTP.sql` si necesitas más registros reales.
 - Antes de ejecutar los ETL de hechos, ejecuta las funciones SCD2 para asegurar que las dimensiones están actualizadas.
 - Los scripts usan funciones PL/pgSQL; ejecuta los archivos en un cliente `psql` con privilegios adecuados.
-
-Si quieres, puedo ejecutar estos pasos contra tu servidor PostgreSQL (proporciona credenciales/confirmación) o ajustar el esquema/volúmenes según necesidades específicas.
